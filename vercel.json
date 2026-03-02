@@ -1,25 +1,13 @@
 {
     "functions": {
-        "api/**/*.php": {
+        "api/*.php": {
             "runtime": "vercel-php@0.7.1"
         },
-        "admin/**/*.php": {
+        "admin/*.php": {
             "runtime": "vercel-php@0.7.1"
         }
     },
     "rewrites": [
-        {
-            "source": "/",
-            "destination": "/index.html"
-        },
-        {
-            "source": "/admin",
-            "destination": "/admin/index.php"
-        },
-        {
-            "source": "/admin/(.*)",
-            "destination": "/admin/$1"
-        },
         {
             "source": "/api/appointments",
             "destination": "/api/appointments.php"
@@ -35,6 +23,14 @@
         {
             "source": "/api/availability",
             "destination": "/api/availability.php"
+        },
+        {
+            "source": "/admin",
+            "destination": "/admin/index.php"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/$1"
         }
     ],
     "headers": [
