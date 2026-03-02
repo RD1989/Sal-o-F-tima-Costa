@@ -1254,9 +1254,11 @@ nav a:hover {
     padding: 60px 0 30px;
 }
 
-grid-template-columns: 2fr 1fr 1.5fr;
-gap: 3rem;
-margin-bottom: 3rem;
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
 }
 
 .footer-brand .logo {
