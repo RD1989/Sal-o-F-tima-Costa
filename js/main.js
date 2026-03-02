@@ -5,6 +5,18 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- FADE-IN INTERSECTION OBSERVER (Prioridade Máxima) ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
     // --- STICKY HEADER ---
     const header = document.getElementById('header');
     const onScroll = () => {
@@ -51,17 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- FADE-IN INTERSECTION OBSERVER ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     // --- FAQ EXPANSÍVEL ---
     document.querySelectorAll('.faq-question').forEach(question => {
@@ -114,21 +115,25 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentIndex = 0;
 
         // Criar dots
-        slides.forEach((_, i) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        });
+        if (dotsContainer) {
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+        }
 
         const dots = document.querySelectorAll('.dot');
 
         function updateCarousel() {
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
-            });
+            if (dots.length > 0) {
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
         }
 
         function goToSlide(index) {
@@ -146,13 +151,14 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCarousel();
         }
 
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
         // Auto play opcional
         let autoPlay = setInterval(nextSlide, 5000);
 
-        [prevBtn, nextBtn, dotsContainer].forEach(el => {
+        const interactiveElements = [prevBtn, nextBtn, dotsContainer].filter(Boolean);
+        interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => clearInterval(autoPlay));
             el.addEventListener('mouseleave', () => autoPlay = setInterval(nextSlide, 5000));
         });
