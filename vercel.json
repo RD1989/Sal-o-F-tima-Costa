@@ -37,14 +37,6 @@
             "destination": "/api/availability.php"
         }
     ],
-    "env": {
-        "DB_HOST": "@db_host",
-        "DB_NAME": "@db_name",
-        "DB_USER": "@db_user",
-        "DB_PASS": "@db_pass",
-        "API_KEY": "@api_key",
-        "SALAO_WHATSAPP": "@salao_whatsapp"
-    },
     "headers": [
         {
             "source": "/api/(.*)",
