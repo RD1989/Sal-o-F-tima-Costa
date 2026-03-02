@@ -1404,6 +1404,190 @@ nav a:hover {
 }
 
 /* ============================================================
+   RESPONSIVIDADE SÊNIOR (MOBILE OPTIMIZATION)
+   ============================================================ */
+@media (max-width: 1024px) {
+    .hero-inner {
+        gap: 3rem;
+    }
+
+    .hero-image-frame img {
+        height: 480px;
+    }
+
+    .sobre-inner {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .sobre-image-wrap {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Ajustes Gerais */
+    section {
+        padding: 80px 0;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    /* Menu Mobile */
+    nav {
+        display: none;
+    }
+
+    nav.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 10, 10, 0.98);
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 800;
+        padding: 2rem;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Seção Problema */
+    .problema-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .problema-list {
+        gap: 1.5rem;
+    }
+
+    .problema-cta-box {
+        padding: 2rem;
+    }
+
+    /* Seção Sobre (História) */
+    .sobre-image-frame img {
+        height: 450px;
+    }
+
+    .sobre-badge-float {
+        right: 10px;
+        bottom: -20px;
+    }
+
+    .sobre-credenciais {
+        justify-content: center;
+    }
+
+    /* Seção CTA Agendamento */
+    .agendamento-cta-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .agendar-beneficios {
+        display: inline-block;
+        text-align: left;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .agendar-card {
+        padding: 2rem;
+    }
+
+    /* Seção Localização */
+    .localizacao-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .mapa-container {
+        height: 300px;
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+    }
+
+    .footer-brand p {
+        margin: 0 auto 1.5rem;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-contact-item {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    /* WhatsApp Flutuante */
+    .wpp-float {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .wpp-float a {
+        padding: 0.8rem;
+        border-radius: 50%;
+    }
+
+    .wpp-float a span {
+        display: none;
+    }
+
+    .wpp-float i {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .sobre-image-frame img {
+        height: 350px;
+    }
+}
+
+/* ============================================================
    RESULTADOS / CARROSSEL
    ============================================================ */
 #resultados {
