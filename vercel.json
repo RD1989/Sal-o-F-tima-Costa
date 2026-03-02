@@ -1,0 +1,89 @@
+{
+    "functions": {
+        "api/**/*.php": {
+            "runtime": "vercel-php@0.7.1"
+        },
+        "admin/**/*.php": {
+            "runtime": "vercel-php@0.7.1"
+        }
+    },
+    "rewrites": [
+        {
+            "source": "/",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/admin",
+            "destination": "/admin/index.php"
+        },
+        {
+            "source": "/admin/(.*)",
+            "destination": "/admin/$1"
+        },
+        {
+            "source": "/api/appointments",
+            "destination": "/api/appointments.php"
+        },
+        {
+            "source": "/api/services",
+            "destination": "/api/services.php"
+        },
+        {
+            "source": "/api/professionals",
+            "destination": "/api/professionals.php"
+        },
+        {
+            "source": "/api/availability",
+            "destination": "/api/availability.php"
+        }
+    ],
+    "env": {
+        "DB_HOST": "@db_host",
+        "DB_NAME": "@db_name",
+        "DB_USER": "@db_user",
+        "DB_PASS": "@db_pass",
+        "API_KEY": "@api_key",
+        "SALAO_WHATSAPP": "@salao_whatsapp"
+    },
+    "headers": [
+        {
+            "source": "/api/(.*)",
+            "headers": [
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "*"
+                },
+                {
+                    "key": "Access-Control-Allow-Methods",
+                    "value": "GET, POST, OPTIONS"
+                },
+                {
+                    "key": "Access-Control-Allow-Headers",
+                    "value": "Content-Type, Authorization, X-Api-Key"
+                },
+                {
+                    "key": "Cache-Control",
+                    "value": "no-store"
+                }
+            ]
+        },
+        {
+            "source": "/css/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000, immutable"
+                }
+            ]
+        },
+        {
+            "source": "/js/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000, immutable"
+                }
+            ]
+        }
+    ]
+}

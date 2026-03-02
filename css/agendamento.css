@@ -1,0 +1,789 @@
+/* ============================================================
+   SALÃO FÁTIMA COSTA — MÓDULO DE AGENDAMENTO
+   Modal Multi-Step: 6 passos
+   ============================================================ */
+
+/* --- OVERLAY --- */
+.agendamento-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.agendamento-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- MODAL --- */
+.agendamento-modal {
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 640px;
+    max-height: 92vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(30px) scale(0.97);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+}
+
+.agendamento-overlay.active .agendamento-modal {
+    transform: translateY(0) scale(1);
+}
+
+/* --- HEADER DO MODAL --- */
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #222;
+    flex-shrink: 0;
+}
+
+.modal-header-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #FEFEF2;
+    margin-bottom: 0.2rem;
+}
+
+.modal-header-info p {
+    font-size: 0.8rem;
+    color: rgba(254, 254, 242, 0.45);
+}
+
+.modal-close {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(254, 254, 242, 0.6);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.modal-close:hover {
+    background: rgba(194, 99, 47, 0.2);
+    color: #C2632F;
+}
+
+/* --- PROGRESS BAR --- */
+.modal-progress {
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid #1e1e1e;
+    flex-shrink: 0;
+}
+
+.progress-steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.progress-line {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background: #2a2a2a;
+    z-index: 0;
+}
+
+.progress-line-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #C2632F, #E19F9D);
+    transition: width 0.4s ease;
+    border-radius: 2px;
+}
+
+.step-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1e1e1e;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(254, 254, 242, 0.35);
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.step-dot.active {
+    border-color: #C2632F;
+    background: rgba(194, 99, 47, 0.15);
+    color: #C2632F;
+}
+
+.step-dot.done {
+    background: #C2632F;
+    border-color: #C2632F;
+    color: #fff;
+}
+
+.step-dot.done::after {
+    content: '✓';
+    font-size: 0.8rem;
+}
+
+.step-dot.done span {
+    display: none;
+}
+
+.progress-label {
+    font-size: 0.78rem;
+    color: rgba(254, 254, 242, 0.45);
+}
+
+.progress-label strong {
+    color: #E19F9D;
+}
+
+/* --- MODAL BODY --- */
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 2px;
+}
+
+/* --- STEPS --- */
+.step-panel {
+    display: none;
+    animation: slideIn 0.3s ease;
+}
+
+.step-panel.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #FEFEF2;
+    margin-bottom: 0.4rem;
+}
+
+.step-subtitle {
+    font-size: 0.875rem;
+    color: rgba(254, 254, 242, 0.5);
+    margin-bottom: 1.75rem;
+}
+
+/* --- GRID DE OPÇÕES --- */
+.opcoes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.opcao-card {
+    background: #1a1a1a;
+    border: 1.5px solid #2a2a2a;
+    border-radius: 14px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    position: relative;
+}
+
+.opcao-card:hover {
+    border-color: rgba(194, 99, 47, 0.5);
+    background: rgba(194, 99, 47, 0.05);
+}
+
+.opcao-card.selected {
+    border-color: #C2632F;
+    background: rgba(194, 99, 47, 0.1);
+}
+
+.opcao-card.selected::before {
+    content: '✓';
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 22px;
+    height: 22px;
+    background: #C2632F;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 22px;
+}
+
+.opcao-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.opcao-nome {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #FEFEF2;
+    margin-bottom: 0.2rem;
+}
+
+.opcao-desc {
+    font-size: 0.75rem;
+    color: rgba(254, 254, 242, 0.45);
+}
+
+/* --- LISTA DE SERVIÇOS --- */
+.servicos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.servico-item-select {
+    background: #1a1a1a;
+    border: 1.5px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.servico-item-select:hover {
+    border-color: rgba(194, 99, 47, 0.5);
+    background: rgba(194, 99, 47, 0.05);
+}
+
+.servico-item-select.selected {
+    border-color: #C2632F;
+    background: rgba(194, 99, 47, 0.1);
+}
+
+.servico-item-info h4 {
+    font-size: 0.925rem;
+    font-weight: 600;
+    color: #FEFEF2;
+    margin-bottom: 0.2rem;
+}
+
+.servico-item-info span {
+    font-size: 0.775rem;
+    color: rgba(254, 254, 242, 0.45);
+}
+
+.servico-item-preco {
+    font-family: 'Playfair Display', serif;
+    color: #C2632F;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* --- PROFISSIONAIS --- */
+.profissionais-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.profissional-card {
+    background: #1a1a1a;
+    border: 1.5px solid #2a2a2a;
+    border-radius: 14px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    position: relative;
+}
+
+.profissional-card:hover {
+    border-color: rgba(194, 99, 47, 0.5);
+}
+
+.profissional-card.selected {
+    border-color: #C2632F;
+    background: rgba(194, 99, 47, 0.1);
+}
+
+.prof-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #C2632F, #E19F9D);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 auto 0.75rem;
+}
+
+.prof-nome {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #FEFEF2;
+    margin-bottom: 0.25rem;
+}
+
+.prof-especialidade {
+    font-size: 0.75rem;
+    color: rgba(254, 254, 242, 0.45);
+}
+
+/* --- CALENDÁRIO --- */
+.calendario-container {
+    max-width: 100%;
+}
+
+.calendario-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0 0.25rem;
+}
+
+.calendario-header h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FEFEF2;
+    text-transform: capitalize;
+}
+
+.cal-nav {
+    width: 36px;
+    height: 36px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #FEFEF2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.cal-nav:hover {
+    background: #C2632F;
+    border-color: #C2632F;
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.cal-day-name {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(254, 254, 242, 0.35);
+    text-transform: uppercase;
+    padding: 0.3rem 0;
+}
+
+.cal-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 0.825rem;
+    font-weight: 500;
+    color: rgba(254, 254, 242, 0.6);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.cal-day.empty {
+    cursor: default;
+}
+
+.cal-day.past {
+    color: rgba(254, 254, 242, 0.2);
+    cursor: not-allowed;
+}
+
+.cal-day.available:hover {
+    background: rgba(194, 99, 47, 0.2);
+    color: #FEFEF2;
+}
+
+.cal-day.selected {
+    background: #C2632F !important;
+    color: #fff !important;
+    font-weight: 700;
+}
+
+.cal-day.today {
+    color: #E19F9D;
+    font-weight: 700;
+}
+
+.cal-day.today::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #E19F9D;
+    border-radius: 50%;
+}
+
+/* --- HORÁRIOS --- */
+.horarios-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.horario-btn {
+    padding: 0.6rem 0.25rem;
+    background: #1a1a1a;
+    border: 1.5px solid #2a2a2a;
+    border-radius: 10px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: rgba(254, 254, 242, 0.7);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.horario-btn:hover {
+    border-color: rgba(194, 99, 47, 0.5);
+    color: #FEFEF2;
+}
+
+.horario-btn.selected {
+    background: #C2632F;
+    border-color: #C2632F;
+    color: #fff;
+}
+
+.horario-btn.ocupado {
+    opacity: 0.3;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+/* --- FORMULÁRIO DO CLIENTE --- */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: rgba(254, 254, 242, 0.7);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: #1a1a1a;
+    border: 1.5px solid #2a2a2a;
+    border-radius: 12px;
+    color: #FEFEF2;
+    font-size: 0.975rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.25s ease;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #C2632F;
+    background: rgba(194, 99, 47, 0.05);
+}
+
+.form-group input::placeholder {
+    color: rgba(254, 254, 242, 0.25);
+}
+
+/* --- RESUMO (Passo Confirmação) --- */
+.resumo-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.resumo-card h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #E19F9D;
+    margin-bottom: 1.25rem;
+}
+
+.resumo-linha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #242424;
+    font-size: 0.9rem;
+}
+
+.resumo-linha:last-child {
+    border-bottom: none;
+}
+
+.resumo-linha .label {
+    color: rgba(254, 254, 242, 0.5);
+}
+
+.resumo-linha .valor {
+    color: #FEFEF2;
+    font-weight: 600;
+}
+
+.resumo-total {
+    background: rgba(194, 99, 47, 0.08);
+    border: 1px solid rgba(194, 99, 47, 0.2);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.resumo-total .label {
+    font-weight: 600;
+    color: rgba(254, 254, 242, 0.7);
+}
+
+.resumo-total .valor {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #C2632F;
+    font-weight: 700;
+}
+
+/* --- SUCESSO --- */
+.sucesso-container {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.sucesso-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(37, 211, 102, 0.12);
+    border: 2px solid rgba(37, 211, 102, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: #25D366;
+}
+
+.sucesso-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #FEFEF2;
+}
+
+.sucesso-container p {
+    color: rgba(254, 254, 242, 0.6);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.btn-wpp-confirmar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #25D366;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+}
+
+.btn-wpp-confirmar:hover {
+    background: #1fba58;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 36px rgba(37, 211, 102, 0.6);
+}
+
+/* --- MODAL FOOTER --- */
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-top: 1px solid #1e1e1e;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    color: rgba(254, 254, 242, 0.7);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.btn-voltar:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #FEFEF2;
+}
+
+.btn-voltar:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.btn-avancar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.75rem;
+    background: #C2632F;
+    border-radius: 10px;
+    color: #FEFEF2;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-avancar:hover {
+    background: #d9722f;
+    transform: translateX(3px);
+}
+
+.btn-avancar:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 480px) {
+    .agendamento-modal {
+        border-radius: 20px 20px 0 0;
+        max-height: 95vh;
+    }
+
+    .agendamento-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .opcoes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profissionais-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .horarios-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 1.25rem;
+    }
+
+    .modal-progress {
+        padding: 1rem 1.25rem;
+    }
+}

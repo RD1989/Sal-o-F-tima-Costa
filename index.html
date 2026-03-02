@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#101010">
+    <title>Salão Fátima Costa | O Melhor Salão de Beleza de Itaperuna</title>
+    <meta name="description" content="Salão Fátima Costa em Itaperuna — 25 anos de excelência em colorimetria, cortes, escova, penteados e Dia da Noiva. Agende online agora!">
+    <meta name="keywords" content="salão de beleza Itaperuna, colorimetria Itaperuna, cabeleireira Itaperuna, dia da noiva Itaperuna, Fátima Costa">
+    <meta property="og:title" content="Salão Fátima Costa | Itaperuna">
+    <meta property="og:description" content="25 anos transformando mulheres em Itaperuna. Agende agora online!">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://salaoefatimacosta.com.br/">
+
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/agendamento.css">
+
+    <!-- JSON-LD Schema Markup (LocalBusiness) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HairSalon",
+        "name": "Salão Fátima Costa",
+        "description": "Salão de beleza de alto padrão em Itaperuna, Rio de Janeiro. Especialista em colorimetria, cortes, escova, penteados e dia da noiva.",
+        "url": "https://salaoefatimacosta.com.br/",
+        "telephone": "+55-22-99999-9999",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Rua [Número e Nome da Rua]",
+            "addressLocality": "Itaperuna",
+            "addressRegion": "RJ",
+            "postalCode": "28300-000",
+            "addressCountry": "BR"
+        },
+        "openingHoursSpecification": [
+            {"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens": "09:00","closes": "19:00"},
+            {"@type": "OpeningHoursSpecification","dayOfWeek": "Saturday","opens": "09:00","closes": "17:00"}
+        ],
+        "priceRange": "$$",
+        "image": "assets/images/fatima.jpg",
+        "founder": {"@type": "Person","name": "Fátima Costa"},
+        "numberOfEmployees": {"@type": "QuantitativeValue","value": 7},
+        "aggregateRating": {"@type": "AggregateRating","ratingValue": "5.0","reviewCount": "320"}
+    }
+    </script>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header id="header">
+    <div class="container">
+        <div class="header-inner">
+            <a href="#hero" class="logo">
+                <div class="logo-icon"><i class="fas fa-spa"></i></div>
+                <div class="logo-text">
+                    <span class="logo-name">Fátima Costa</span>
+                    <span class="logo-sub">Salão de Beleza · Itaperuna</span>
+                </div>
+            </a>
+
+            <nav id="nav-menu">
+                <a href="#servicos">Serviços</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#depoimentos">Avaliações</a>
+                <a href="#localizacao">Localização</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+
+            <div class="header-cta">
+                <a href="https://wa.me/5522999999999?text=Olá! Gostaria de agendar um horário no Salão Fátima Costa." target="_blank" rel="noopener" class="btn-wpp-header" aria-label="Chamar no WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<main>
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-content fade-in">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Referência em Itaperuna há 25 anos</span>
+                </div>
+
+                <h1 class="hero-title">
+                    O Salão que<br>
+                    <span class="highlight">Transforma</span><br>
+                    em Itaperuna
+                </h1>
+
+                <p class="hero-desc">
+                    Você merece sair do salão se sentindo a mulher mais linda de Itaperuna. 
+                    Especialistas em colorimetria, cortes de design, escova e o Dia da Noiva dos seus sonhos.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="btn-primary btn-pulse" data-abrir-agendamento id="hero-btn-agendar">
+                        <i class="fas fa-calendar-plus"></i>
+                        Agendar Horário Online
+                    </button>
+                    <a href="#servicos" class="btn-outline">
+                        <i class="fas fa-list"></i>
+                        Ver Serviços
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="25" data-suffix="+">0</span>
+                        <span class="stat-label">Anos no mercado</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="7">0</span>
+                        <span class="stat-label">Profissionais</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="5000" data-suffix="+">0</span>
+                        <span class="stat-label">Clientes atendidas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image-wrap fade-in fade-in-delay-2">
+                <div class="hero-image-frame">
+                    <img src="assets/images/fatima.jpg" alt="Fátima Costa — Proprietária do Salão Fátima Costa em Itaperuna" loading="lazy">
+                    <div class="hero-badge-float">
+                        <div class="badge-icon"><i class="fas fa-award"></i></div>
+                        <div class="badge-text">
+                            <strong>Ex-Instrutora SENAC</strong>
+                            <span>Formação de Topo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     PROBLEMA / DOR LOCAL
+     ============================================================ -->
+<section id="problema">
+    <div class="container">
+        <div class="problema-inner">
+            <div class="fade-in">
+                <span class="section-label">Entendemos sua dor</span>
+                <h2 class="section-title">Você já passou por isso em Itaperuna?</h2>
+
+                <div class="problema-list">
+                    <div class="problema-item">
+                        <div class="problema-icon"><i class="fas fa-times-circle"></i></div>
+                        <div>
+                            <h4>Saiu do salão completamente diferente do combinado</h4>
+                            <p>A coloração ficou errada, o corte não ficou como você pediu...</p>
+                        </div>
+                    </div>
+                    <div class="problema-item">
+                        <div class="problema-icon"><i class="fas fa-times-circle"></i></div>
+                        <div>
+                            <h4>Fio danificado por profissional sem técnica</h4>
+                            <p>Química malfeita que deixou o cabelo quebradiço e sem vida.</p>
+                        </div>
+                    </div>
+                    <div class="problema-item">
+                        <div class="problema-icon"><i class="fas fa-times-circle"></i></div>
+                        <div>
+                            <h4>Horas de espera sem hora marcada</h4>
+                            <p>Passa o dia inteiro no salão sem previsão de quando será atendida.</p>
+                        </div>
+                    </div>
+                    <div class="problema-item">
+                        <div class="problema-icon"><i class="fas fa-times-circle"></i></div>
+                        <div>
+                            <h4>Noiva arrependida no dia mais importante</h4>
+                            <p>Penteado que desmanchou nas primeiras horas da festa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="problema-cta-box fade-in fade-in-delay-2">
+                <i class="fas fa-shield-alt" style="font-size:2.5rem; color: var(--burnt-terracotta); margin-bottom:1rem; display:block;"></i>
+                <h3>No Salão Fátima Costa isso <span style="color:var(--burnt-terracotta)">nunca acontece</span></h3>
+                <p>25 anos de experiência, formação SENAC e uma equipe de 7 profissionais treinados pessoalmente pela Fátima garantem o resultado que você merece.</p>
+                <button class="btn-primary" data-abrir-agendamento id="problema-btn-agendar">
+                    <i class="fas fa-calendar-check"></i>
+                    Quero agendar agora
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SERVIÇOS
+     ============================================================ -->
+<section id="servicos">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-label">Nossos Serviços</span>
+            <h2 class="section-title">Tudo que você precisa<br>em um só lugar em Itaperuna</h2>
+            <p class="section-subtitle">Da manutenção do dia a dia ao grande evento da sua vida, temos o serviço perfeito para você.</p>
+        </div>
+
+        <div class="servicos-tabs fade-in">
+            <button class="tab-btn active" data-cat="todos">Todos</button>
+            <button class="tab-btn" data-cat="coloracao">Coloração</button>
+            <button class="tab-btn" data-cat="corte">Cortes</button>
+            <button class="tab-btn" data-cat="escova">Escova</button>
+            <button class="tab-btn" data-cat="noiva">Noivas</button>
+            <button class="tab-btn" data-cat="tratamento">Tratamentos</button>
+            <button class="tab-btn" data-cat="sobrancelha">Sobrancelha</button>
+        </div>
+
+        <div class="servicos-grid">
+            <!-- COLORAÇÃO -->
+            <article class="servico-card fade-in" data-cat="coloracao" data-servico-id="1">
+                <div class="servico-card-icon"><i class="fas fa-palette"></i></div>
+                <h3>Coloração & Luzes</h3>
+                <p>Mechas, balayage, loiro platinado e colorações completas com produtos de alta qualidade e técnica impecável.</p>
+                <div class="servico-card-footer">
+                    <span class="servico-price">A partir de R$ 120</span>
+                    <span class="servico-duration"><i class="far fa-clock"></i> 90–240 min</span>
+                </div>
+                <button class="servico-btn-agendar">Agendar este serviço</button>
+            </article>
+
+            <article class="servico-card fade-in fade-in-delay-1" data-cat="coloracao" data-servico-id="4">
+                <div class="servico-card-icon"><i class="fas fa-magic"></i></div>
+                <h3>Balayage & Ombré</h3>
+                <p>Técnicas de coloração naturais e degradê que valorizam cada fio com efeito sofisticado e moderno.</p>
+                <div class="servico-card-footer">
+                    <span class="servico-price">A consultar</span>
+                    <span class="servico-duration"><i class="far fa-clock"></i> 3–4h</span>
+                </div>
+                <button class="servico-btn-agendar">Agendar este serviço</button>
+            </article>
+
+            <!-- CORTES -->
+            <article class="servico-card fade-in fade-in-delay-2" data-cat="corte" data-servico-id="6">
+                <div class="servico-card-icon"><i class="fas fa-cut"></i></div>
+                <h3>Design de Cortes</h3>
+                <p>Cortes femininos personalizados que valorizam o rosto e o estilo de vida de cada cliente, assinados por Fátima Costa.</p>
+                <div class="servico-card-footer">
+                    <span class="servico-price">A partir de R$ 70</span>
+                    <span class="servico-duration"><i class="far fa-clock"></i> 60 min</span>
+                </div>
+                <button class="servico-btn-agendar">Agendar este serviço</button>
+            </article>
+
+            <!-- NOIVAS -->
+            <article class="servico-card fade-in fade-in-delay-3" data-cat="noiva" data-servico-id="10">
+                <div class="servico-card-icon"><i class="fas fa-crown"></i></div>
+                <h3>Dia da Noiva</h3>
+                <p>Pacote completo para o seu grande dia: penteado, make, escova e tratamento. Você merece estar deslumbrante.</p>
+                <div class="servico-card-footer">
+                    <span class="servico-price">A consultar</span>
+                    <span class="servico-duration"><i class="far fa-clock"></i> 4–6h</span>
+                </div>
+                <button class="servico-btn-agendar">Agendar este serviço</button>
+            </article>
+
+            <!-- ESCOVA -->
+            <article class="servico-card fade-in" data-cat="escova" data-servico-id="12">
+                <div class="servico-card-icon"><i class="fas fa-wind"></i></div>
+                <h3>Escova & Finalização</h3>
+                <p>Escova impecável com acabamento profissional que dura dias. A especialidade da casa, referência em Itaperuna.</p>
+                <div class="servico-card-footer">
+                    <span class="servico-price">A partir de R$ 60</span>
+                    <span class="servico-duration"><i class="far fa-clock"></i> 45–60 min</span>
+                </div>
+                <button class="servico-btn-agendar">Agendar este serviço</button>
+            </article>
+
+            <!-- TRATAMENTOS -->
+            <article class="servico-card fade-in fade-in-delay-1" data-cat="tratamento" data-servico-id="17">
+                <div class="servico-card-icon"><i class="fas fa-sparkles"></i></div>
+                <h3>Nutrição & Botox Capilar</h3>
+                <p>Restauração profunda para cabelos danificados, com técnicas avançadas de hidratação e nutrição intensiva.</p>
+                <div class="servico-card-footer">
+                    <span class="servico-price">A partir de R$ 180</span>
+                    <span class="servico-duration"><i class="far fa-clock"></i> 2h</span>
+                </div>
+                <button class="servico-btn-agendar">Agendar este serviço</button>
+            </article>
+
+            <!-- SOBRANCELHA -->
+            <article class="servico-card fade-in fade-in-delay-2" data-cat="sobrancelha" data-servico-id="18">
+                <div class="servico-card-icon"><i class="fas fa-star"></i></div>
+                <h3>Design de Sobrancelha</h3>
+                <p>Modelagem personalizada que enquadra e valoriza o rosto, deixando o olhar mais marcante e expressivo.</p>
+                <div class="servico-card-footer">
+                    <span class="servico-price">R$ 25</span>
+                    <span class="servico-duration"><i class="far fa-clock"></i> 30 min</span>
+                </div>
+                <button class="servico-btn-agendar">Agendar este serviço</button>
+            </article>
+
+            <!-- PROGRESSIVA -->
+            <article class="servico-card fade-in fade-in-delay-3" data-cat="escova" data-servico-id="13">
+                <div class="servico-card-icon"><i class="fas fa-fire-alt"></i></div>
+                <h3>Escova Progressiva</h3>
+                <p>Disciplinamento e alinhamento dos fios com produtos de qualidade para um resultado liso, brilhoso e duradouro.</p>
+                <div class="servico-card-footer">
+                    <span class="servico-price">A partir de R$ 200</span>
+                    <span class="servico-duration"><i class="far fa-clock"></i> 3h</span>
+                </div>
+                <button class="servico-btn-agendar">Agendar este serviço</button>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SOBRE
+     ============================================================ -->
+<section id="sobre">
+    <div class="container">
+        <div class="sobre-inner">
+            <div class="sobre-image-wrap fade-in">
+                <div class="sobre-image-frame">
+                    <img src="assets/images/fatima.jpg" alt="Fátima Costa — Empresária e cabeleireira há 25 anos em Itaperuna" loading="lazy">
+                </div>
+                <div class="sobre-badge-float">
+                    <span class="num">25</span>
+                    <span class="desc">Anos de<br>experiência</span>
+                </div>
+            </div>
+
+            <div class="sobre-texto fade-in fade-in-delay-2">
+                <span class="section-label">A história por trás do salão</span>
+                <h2 class="section-title">Fátima Costa:<br>a autoridade em beleza de Itaperuna</h2>
+
+                <div class="sobre-credenciais">
+                    <span class="credencial-tag"><i class="fas fa-certificate"></i> Ex-Instrutora SENAC Itaperuna</span>
+                    <span class="credencial-tag"><i class="fas fa-palette"></i> Especialista em Colorimetria</span>
+                    <span class="credencial-tag"><i class="fas fa-cut"></i> Design de Cortes</span>
+                    <span class="credencial-tag"><i class="fas fa-crown"></i> Dia da Noiva</span>
+                    <span class="credencial-tag"><i class="fas fa-wind"></i> Escovista de Excelência</span>
+                    <span class="credencial-tag"><i class="fas fa-spa"></i> Penteados</span>
+                </div>
+
+                <p>Há <strong>25 anos</strong>, Fátima Costa decidiu que as mulheres de Itaperuna mereciam um salão de beleza à altura do nível delas. E foi com essa missão que ela construiu, tijolo por tijolo, o espaço que hoje é referência indiscutível na cidade.</p>
+                <p>Formada com distinção e ex-instrutora do renomado <strong>SENAC Itaperuna</strong>, Fátima não apenas aprendeu as melhores técnicas — ela as ensinou. Esse bagagão de conhecimento é o que diferencia cada atendimento no salão.</p>
+                <p>Sua paixão pela transformação e pela excelência no acabamento fez com que ela se tornasse a <strong>escovista mais requisitada da região</strong>, além de referência em colorimetria e nos momentos mais especiais da vida das mulheres: o Dia da Noiva.</p>
+
+                <div class="sobre-equipe">
+                    <i class="fas fa-users"></i>
+                    <p><strong>7 profissionais</strong> treinados e supervisionados pessoalmente por Fátima Costa — cada um mantendo o padrão de excelência que o nome do salão representa.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     PROVA SOCIAL — DEPOIMENTOS
+     ============================================================ -->
+<section id="depoimentos">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-label">O que dizem sobre nós</span>
+            <h2 class="section-title">Avaliações reais de clientes<br>de Itaperuna e região</h2>
+        </div>
+
+        <div class="depoimentos-grid">
+            <article class="depoimento-card fade-in">
+                <div class="stars">★★★★★</div>
+                <p>"A Fátima é a única que toca no meu cabelo há 12 anos. Já tentei outros salões em Itaperuna mas nenhum chega nem perto do resultado que ela entrega. Meu loiro é impecável!"</p>
+                <div class="depoimento-autor">
+                    <div class="autor-avatar">AS</div>
+                    <div class="autor-info">
+                        <strong>Ana Silveira</strong>
+                        <span>Itaperuna, RJ · Cliente há 12 anos</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="depoimento-card fade-in fade-in-delay-1">
+                <div class="stars">★★★★★</div>
+                <p>"Fiz meu Dia da Noiva no Salão Fátima Costa e foi perfeito. O penteado durou toda a festa, a make ficou incrível. Recebi elogios de todos os convidados. Super recomendo!"</p>
+                <div class="depoimento-autor">
+                    <div class="autor-avatar">FM</div>
+                    <div class="autor-info">
+                        <strong>Fernanda Martins</strong>
+                        <span>Itaperuna, RJ · Noiva 2025</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="depoimento-card fade-in fade-in-delay-2">
+                <div class="stars">★★★★★</div>
+                <p>"Vim de Campos para Itaperuna especificamente para fazer as mechas com a Fátima. O resultado foi simplesmente incrível! Valeu cada quilômetro. Já agendei o retorno."</p>
+                <div class="depoimento-autor">
+                    <div class="autor-avatar">RC</div>
+                    <div class="autor-info">
+                        <strong>Renata Carvalho</strong>
+                        <span>Campos dos Goytacazes, RJ</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="depoimento-card fade-in">
+                <div class="stars">★★★★★</div>
+                <p>"A equipe toda é muito atenciosa e qualificada. Nunca esperei mais de 10 minutos além do meu horário. Higiene impecável, ambiente lindo. É o único salão que eu indico em Itaperuna!"</p>
+                <div class="depoimento-autor">
+                    <div class="autor-avatar">PL</div>
+                    <div class="autor-info">
+                        <strong>Patrícia Lima</strong>
+                        <span>Itaperuna, RJ · Cliente fiel</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="depoimento-card fade-in fade-in-delay-1">
+                <div class="stars">★★★★★</div>
+                <p>"A Fátima tem um olhar único para colorimetria. Ela analisou meu tom de pele e sugeriu a cor perfeita para mim. Nunca tinha visto meu cabelo tão lindo. Ela é realmente uma artista!"</p>
+                <div class="depoimento-autor">
+                    <div class="autor-avatar">JO</div>
+                    <div class="autor-info">
+                        <strong>Juliana Oliveira</strong>
+                        <span>Itaperuna, RJ · Cliente há 8 anos</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="depoimento-card fade-in fade-in-delay-2">
+                <div class="stars">★★★★★</div>
+                <p>"Agendei online, fui no horário marcado e fui atendida na hora! Corte + escova com resultado de revista. O aplicativo facilitou muito, consegui marcar em 2 minutos pelo celular."</p>
+                <div class="depoimento-autor">
+                    <div class="autor-avatar">CS</div>
+                    <div class="autor-info">
+                        <strong>Camila Santos</strong>
+                        <span>Itaperuna, RJ · Agendamento online</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     AGENDAMENTO — CTA
+     ============================================================ -->
+<section id="agendamento-cta">
+    <div class="container">
+        <div class="agendamento-cta-inner">
+            <div class="fade-in">
+                <span class="section-label">Agende com facilidade</span>
+                <h2 class="section-title">Reserve seu horário em<br>menos de 2 minutos</h2>
+                <p class="section-subtitle">Sem ligação, sem espera. Escolha o serviço, o profissional, o dia e o horário — tudo online.</p>
+
+                <div class="agendar-beneficios">
+                    <div class="agendar-beneficio"><i class="fas fa-check-circle"></i> Confirmação instantânea pelo WhatsApp</div>
+                    <div class="agendar-beneficio"><i class="fas fa-check-circle"></i> Escolha o profissional de sua preferência</div>
+                    <div class="agendar-beneficio"><i class="fas fa-check-circle"></i> Cancele ou remarque com facilidade</div>
+                    <div class="agendar-beneficio"><i class="fas fa-check-circle"></i> Disponível 24h para acompanhar sua agenda</div>
+                    <div class="agendar-beneficio"><i class="fas fa-check-circle"></i> Sem taxa de agendamento — é 100% gratuito</div>
+                </div>
+            </div>
+
+            <div class="agendar-card fade-in fade-in-delay-2">
+                <i class="fas fa-calendar-alt" style="font-size:2rem; color: var(--burnt-terracotta); margin-bottom:1rem;"></i>
+                <h3>Agendar Horário Online</h3>
+                <p>Escolha o melhor horário para você. Nossa equipe estará pronta para te receber!</p>
+                <button class="btn-primary btn-pulse" data-abrir-agendamento id="card-btn-agendar">
+                    <i class="fas fa-calendar-plus"></i>
+                    Agendar Agora — É Grátis
+                </button>
+                <div class="horarios">
+                    <span><i class="far fa-clock"></i> Seg–Sex: 09h às 19h</span>
+                    <span><i class="far fa-clock"></i> Sábado: 09h às 17h</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     LOCALIZAÇÃO
+     ============================================================ -->
+<section id="localizacao">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-label">Onde nos encontrar</span>
+            <h2 class="section-title">Estamos no coração<br>de Itaperuna — RJ</h2>
+        </div>
+
+        <div class="localizacao-inner">
+            <div class="localizacao-info fade-in">
+                <div class="localizacao-item">
+                    <div class="loc-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4>Endereço</h4>
+                        <p>Rua [Nome da Rua], Nº [Número]<br>Bairro [Nome], Itaperuna – RJ<br>CEP 28300-000</p>
+                    </div>
+                </div>
+                <div class="localizacao-item">
+                    <div class="loc-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div>
+                        <h4>Telefone / WhatsApp</h4>
+                        <p><a href="tel:+5522999999999">(22) 99999-9999</a></p>
+                    </div>
+                </div>
+                <div class="localizacao-item">
+                    <div class="loc-icon"><i class="far fa-clock"></i></div>
+                    <div>
+                        <h4>Horário de Funcionamento</h4>
+                        <p>Segunda a Sexta: 09h às 19h<br>Sábado: 09h às 17h<br>Domingo: Fechado</p>
+                    </div>
+                </div>
+                <div class="localizacao-item">
+                    <div class="loc-icon"><i class="fab fa-instagram"></i></div>
+                    <div>
+                        <h4>Redes Sociais</h4>
+                        <p><a href="https://instagram.com/" target="_blank" rel="noopener">@salaoefatimacosta</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mapa-container fade-in fade-in-delay-2">
+                <!-- Substitua pelo iframe real do Google Maps com as coordenadas do salão -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3716.123456789!2d-41.88765!3d-21.20345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sIt aperuna%2C+RJ!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Localização do Salão Fátima Costa em Itaperuna">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     CTA FINAL
+     ============================================================ -->
+<section id="cta-final">
+    <div class="container">
+        <div class="cta-final-inner fade-in">
+            <span class="section-label">Não deixe para depois</span>
+            <h2>Sua <span style="color:var(--burnt-terracotta)">transformação</span><br>começa agora em Itaperuna</h2>
+            <p>As melhores clientes de Itaperuna já têm seu horário marcado. Garanta o seu antes que os slots da semana se esgotem.</p>
+
+            <button class="btn-primary btn-pulse" data-abrir-agendamento id="cta-final-btn" style="font-size:1.1rem; padding:1.1rem 2.5rem;">
+                <i class="fas fa-calendar-plus"></i>
+                Agendar Meu Horário Agora
+            </button>
+
+            <div class="urgencia-tag">
+                <i class="fas fa-fire"></i>
+                <span>Alta demanda · Agende com antecedência</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section id="faq">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-label">Dúvidas frequentes</span>
+            <h2 class="section-title">Perguntas mais comuns<br>das clientes de Itaperuna</h2>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span>Como funciona o agendamento online?</span>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Clique em qualquer botão "Agendar" do site. Um assistente em 5 passos vai te guiar: você escolhe o serviço, a profissional, a data, o horário e informa só seu nome e WhatsApp. Depois, você recebe a confirmação diretamente pelo WhatsApp.</div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span>Preciso pagar para agendar online?</span>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Não! O agendamento online é completamente gratuito. Você só paga pelo serviço no dia do atendimento, diretamente no salão.</div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span>Posso cancelar ou remarcar meu horário?</span>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Sim! Pedimos apenas que nos avise com pelo menos 24h de antecedência pelo WhatsApp para que possamos liberar o horário para outra cliente. Imprevistos acontecem e entendemos isso.</div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span>Vocês atendem clientes de outras cidades?</span>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Com certeza! Atendemos clientes de toda a região, incluindo Campos dos Goytacazes, Miracema, Natividade e outras cidades próximas a Itaperuna. Nossos resultados valem o deslocamento!</div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span>Como funciona o Pacote Dia da Noiva?</span>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">O Pacote Dia da Noiva inclui penteado, maquiagem, escova e tratamento especial. Recomendamos agendar uma sessão de teste de penteado e maquiagem com antecedência para garantir que o resultado seja exatamente o que você sonhou. Entre em contato pelo WhatsApp para montar o pacote personalizado.</div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span>Quanto tempo antes devo chegar?</span>
+                    <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Recomendamos chegar 10 minutos antes do horário agendado. Isso permite que sua profissional faça uma consulta breve sobre seus objetivos e preparar o material necessário para o melhor resultado.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#hero" class="logo">
+                    <div class="logo-icon"><i class="fas fa-spa"></i></div>
+                    <div class="logo-text">
+                        <span class="logo-name">Fátima Costa</span>
+                        <span class="logo-sub">Salão de Beleza</span>
+                    </div>
+                </a>
+                <p>O salão de beleza de alto padrão de Itaperuna.<br>25 anos transformando mulheres com excelência, técnica e carinho.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5522999999999" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://facebook.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="#servicos">Coloração & Mechas</a></li>
+                    <li><a href="#servicos">Design de Cortes</a></li>
+                    <li><a href="#servicos">Escova & Finalização</a></li>
+                    <li><a href="#servicos">Dia da Noiva</a></li>
+                    <li><a href="#servicos">Tratamentos Capilares</a></li>
+                    <li><a href="#servicos">Design de Sobrancelha</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#sobre">Sobre Fátima Costa</a></li>
+                    <li><a href="#depoimentos">Avaliações</a></li>
+                    <li><a href="#localizacao">Como Chegar</a></li>
+                    <li><a href="#faq">Perguntas Frequentes</a></li>
+                    <li><a href="admin/index.php">Área Administrativa</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato — Itaperuna</h4>
+                <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Rua [Nome], Nº [N]<br>Itaperuna – RJ, 28300-000</span></div>
+                <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><a href="https://wa.me/5522999999999">(22) 99999-9999</a></div>
+                <div class="footer-contact-item"><i class="far fa-clock"></i><span>Seg–Sex: 09h–19h<br>Sáb: 09h–17h</span></div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Salão Fátima Costa · Itaperuna, Rio de Janeiro. Todos os direitos reservados.</p>
+            <p>Desenvolvido com <i class="fas fa-heart" style="color:var(--burnt-terracotta)"></i> para o melhor salão de Itaperuna</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================================
+     BOTÃO FLUTUANTE WHATSAPP
+     ============================================================ -->
+<div class="wpp-float">
+    <a href="https://wa.me/5522999999999?text=Olá Fátima!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20horário." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span>Falar no WhatsApp</span>
+    </a>
+</div>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script src="js/agendamento.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
