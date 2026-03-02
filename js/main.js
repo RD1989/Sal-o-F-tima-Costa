@@ -5,18 +5,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- FADE-IN INTERSECTION OBSERVER (Prioridade Máxima) ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
     // --- STICKY HEADER ---
     const header = document.getElementById('header');
     const onScroll = () => {
@@ -163,31 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('mouseleave', () => autoPlay = setInterval(nextSlide, 5000));
         });
     }
-
-    // --- CONTADOR ANIMADO NOS STATS ---
-    const counters = document.querySelectorAll('.stat-number[data-count]');
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const target = parseInt(el.dataset.count);
-                const suffix = el.dataset.suffix || '';
-                let count = 0;
-                const duration = 1800;
-                const increment = target / (duration / 16);
-
-                const update = () => {
-                    count = Math.min(count + increment, target);
-                    el.textContent = Math.floor(count) + suffix;
-                    if (count < target) requestAnimationFrame(update);
-                };
-                requestAnimationFrame(update);
-                counterObserver.unobserve(el);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => counterObserver.observe(counter));
 
     // --- ABRIR MODAL DE AGENDAMENTO COM SERVIÇO PRÉ-SELECIONADO ---
     document.querySelectorAll('.servico-btn-agendar').forEach(btn => {
