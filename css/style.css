@@ -1412,7 +1412,9 @@ nav a:hover {
     }
 
     .hero-image-frame img {
-        height: 480px;
+        height: auto;
+        max-height: 480px;
+        object-fit: contain;
     }
 
     .sobre-inner {
@@ -1478,12 +1480,25 @@ nav a:hover {
 
     /* Seção Sobre (História) */
     .sobre-image-frame img {
-        height: 450px;
+        height: auto;
+        max-height: 450px;
+        object-fit: cover;
     }
 
     .sobre-badge-float {
-        right: 10px;
-        bottom: -20px;
+        right: -10px;
+        bottom: 10px;
+        top: auto;
+        min-width: 130px;
+        padding: 0.75rem 1rem;
+    }
+
+    .sobre-badge-float .num {
+        font-size: 1.8rem;
+    }
+
+    .sobre-badge-float .desc {
+        font-size: 0.65rem;
     }
 
     .sobre-credenciais {
@@ -1569,21 +1584,24 @@ nav a:hover {
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
-    .hero-actions {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .hero-actions .btn {
-        width: 100%;
-        justify-content: center;
+    .hero-image-frame img {
+        height: auto;
+        max-height: 350px;
     }
 
     .sobre-image-frame img {
-        height: 350px;
+        height: auto;
+        max-height: 350px;
+    }
+
+    .sobre-badge-float {
+        right: 10px;
+        bottom: 20px;
+        min-width: 110px;
+        padding: 0.5rem 0.75rem;
     }
 }
 
