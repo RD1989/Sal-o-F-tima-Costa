@@ -79,27 +79,84 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- TABS DE SERVIÇOS ---
+    // SERVICE TABS — Filtro de Serviços
     const tabBtns = document.querySelectorAll('.tab-btn');
     const servicoCards = document.querySelectorAll('.servico-card');
 
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            tabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    if (tabBtns.length > 0) {
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cat = btn.dataset.cat;
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
 
-            const categoria = btn.dataset.cat;
-            servicoCards.forEach(card => {
-                if (categoria === 'todos' || card.dataset.cat === categoria) {
-                    card.style.display = '';
-                    setTimeout(() => card.classList.add('visible'), 10);
-                } else {
-                    card.style.display = 'none';
-                    card.classList.remove('visible');
-                }
+                servicoCards.forEach(card => {
+                    if (cat === 'todos' || card.dataset.cat === cat) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 10);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
             });
         });
-    });
+    }
+
+    // CARROSSEL DE RESULTADOS
+    const track = document.getElementById('results-track');
+    const dotsContainer = document.getElementById('carousel-dots');
+    const prevBtn = document.getElementById('prev-result');
+    const nextBtn = document.getElementById('next-result');
+    const slides = document.querySelectorAll('.result-item');
+
+    if (track && slides.length > 0) {
+        let currentIndex = 0;
+
+        // Criar dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Auto play opcional
+        let autoPlay = setInterval(nextSlide, 5000);
+
+        [prevBtn, nextBtn, dotsContainer].forEach(el => {
+            el.addEventListener('mouseenter', () => clearInterval(autoPlay));
+            el.addEventListener('mouseleave', () => autoPlay = setInterval(nextSlide, 5000));
+        });
+    }
 
     // --- CONTADOR ANIMADO NOS STATS ---
     const counters = document.querySelectorAll('.stat-number[data-count]');
