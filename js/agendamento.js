@@ -516,7 +516,7 @@
 
     // ===== GERAÇÃO DE LINK WHATSAPP =====
     function gerarLinkWhatsApp() {
-        const SALAO_WHATSAPP = '5522999999999'; // Número do salão
+        const SALAO_WHATSAPP = '5522999175052'; // Número do salão
         const dataFormatada = formatarData(state.data);
         const servNome = state.servico ? state.servico.nome : 'Serviço';
 
